@@ -9,6 +9,7 @@ mongoose.connect('mongodb+srv://goweek:goweek@cluster0-5eznv.mongodb.net/test?re
     useUnifiedTopology: true
 });
 
+app.use(express.json()); // informa ao express que as req serão feitas através de json
 app.use(routes);
 
 app.listen(3000, () => {

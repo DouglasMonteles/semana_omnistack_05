@@ -1,10 +1,12 @@
 const express = require('express');
 
+const TweetController = require('./controllers/TweetController');
+
 const routes = express.Router();
 
-// routes.get
-routes.get('/', (req, res) => {
-    res.send('Hellow Word');
-});
+routes.get('/tweets', TweetController.index);
+
+routes.post('/tweets', TweetController.store);
+
 
 module.exports = routes;
