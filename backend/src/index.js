@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const routes = require('./routes');
 
 const app = express();
 
@@ -8,9 +9,7 @@ mongoose.connect('mongodb+srv://goweek:goweek@cluster0-5eznv.mongodb.net/test?re
     useUnifiedTopology: true
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+app.use(routes);
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');
