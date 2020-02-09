@@ -10,6 +10,8 @@ module.exports = {
     async store(req, res) { // cadastra os tweets
         const tweet = await Tweet.create(req.body);
 
+        req.io.emit('tweet', tweet); // atualiza o tweet em tempo real
+
         return res.json(tweet);
     }
 }
