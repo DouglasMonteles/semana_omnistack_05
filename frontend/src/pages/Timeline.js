@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../services/api';
 
 import './Timeline.css';
 
@@ -9,13 +10,18 @@ export default class Timeline extends Component {
         newTweet: ''
     };
 
-    handleNewTweet = (e) => {
+    handleNewTweet = async e => {
         if (e.keyCode !== 13) return;
 
         const content = this.state.newTweet;
         const author = localStorage.getItem('@GoTwitter:username');
+        
+        await api.post('tweets', { content, author }).then(res => {
+            console.log(res);
+        })
 
-        console.log(content, author);
+
+        this.setState({ newTweet: '' })
     }
 
     handleInputChange = (e) => {
@@ -33,6 +39,7 @@ export default class Timeline extends Component {
                         onChange={this.handleInputChange}
                         onKeyDown={this.handleNewTweet}
                         placeholder="O que está acontecendo?"
+                        wrap="off"
                     ></textarea>
                 </form>
             </div>

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json()); // informa ao express que as req serão feitas através de json
+app.use(cors()); // habilita req http, deve ser usado antes das rotas
 app.use(routes);
 
 app.listen(3000, () => {
