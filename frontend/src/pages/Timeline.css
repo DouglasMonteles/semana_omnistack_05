@@ -29,3 +29,9 @@
     border-radius: 5px;
     resize: none;
 }
+
+.tweet-list {
+    list-style: none;
+    text-align: left;
+    margin-left: 2%;
+}

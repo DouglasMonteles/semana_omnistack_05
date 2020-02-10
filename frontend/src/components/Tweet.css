@@ -1,2 +1,36 @@
 @charset "UTF-8";
 
+* {
+    font-family: 'Times New Roman', Helvetica, sans-serif;
+}
+
+.tweet {
+    margin: 50px 0;
+}
+
+.tweet strong {
+    
+}
+
+.tweet p {
+    margin: 20px 0;
+    font-size: 10pt;
+}
+
+.tweet button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.tweet img {
+    width: 25px;
+}
+
+.tweet button span {
+    font-size: 12pt;
+    margin-top: 5px;
+    margin-left: 10px;;
+    position: absolute;
+    cursor: auto;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import api from '../services/api';
 
+import Tweet from '../components/Tweet';
+
 import './Timeline.css';
 
 import logoTwitter from './img/twitter.png';
@@ -47,9 +49,11 @@ export default class Timeline extends Component {
                     ></textarea>
                 </form>
 
+                <ul className="tweet-list">
                 { this.state.tweets.map(tweet => (
-                    <h1>{ tweet.content }</h1>
+                    <Tweet key={tweet._id} tweet={tweet} />
                 ))}
+                </ul>
             </div>
         );
     }
