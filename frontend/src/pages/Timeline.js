@@ -7,8 +7,15 @@ import logoTwitter from './img/twitter.png';
 
 export default class Timeline extends Component {
     state = {
+        tweets: [],
         newTweet: ''
     };
+
+    async componentDidMount() {
+        const response = await api.get('tweets');
+
+        this.setState({ tweets: response.data });
+    }
 
     handleNewTweet = async e => {
         if (e.keyCode !== 13) return;
@@ -16,10 +23,7 @@ export default class Timeline extends Component {
         const content = this.state.newTweet;
         const author = localStorage.getItem('@GoTwitter:username');
         
-        await api.post('tweets', { content, author }).then(res => {
-            console.log(res);
-        })
-
+        await api.post('tweets', { content, author });
 
         this.setState({ newTweet: '' })
     }
@@ -42,6 +46,10 @@ export default class Timeline extends Component {
                         wrap="off"
                     ></textarea>
                 </form>
+
+                { this.state.tweets.map(tweet => (
+                    <h1>{ tweet.content }</h1>
+                ))}
             </div>
         );
     }
