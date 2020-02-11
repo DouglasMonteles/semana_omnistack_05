@@ -23,14 +23,21 @@ export default class Timeline extends Component {
     }
 
     subscribeToEvents = () => {
-        const io = socket('http://localhost:3002');
+        const io = socket('http://localhost:3002'); //porta que o socket.io ouve 
 
         io.on('tweet', data => {
-            console.log(data);
+            this.setState({ tweets: [data, ...this.state.tweets]});
         });
 
         io.on('like', data => {
-            console.log(data);
+            this.setState({ 
+                tweets: this.state.tweets.map(
+                    // percoro cada tweet, se id do tweet do state for igual ao id do tweet que 
+                    //vem no evendo data entao retorne data, o novo tweet atualizado, senao retorne o 
+                    //tweet padrao 
+                    tweet => (tweet._id === data._id ? data : tweet)
+                )
+            });
         });
     }
 
