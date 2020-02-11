@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import api from '../services/api';
 
+import api from '../services/api';
 import Tweet from '../components/Tweet';
+import socket from 'socket.io-client';
 
 import './Timeline.css';
 
@@ -14,9 +15,23 @@ export default class Timeline extends Component {
     };
 
     async componentDidMount() {
+        this.subscribeToEvents();
+
         const response = await api.get('tweets');
 
         this.setState({ tweets: response.data });
+    }
+
+    subscribeToEvents = () => {
+        const io = socket('http://localhost:3002');
+
+        io.on('tweet', data => {
+            console.log(data);
+        });
+
+        io.on('like', data => {
+            console.log(data);
+        });
     }
 
     handleNewTweet = async e => {
