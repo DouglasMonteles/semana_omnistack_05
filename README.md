@@ -1,7 +1,7 @@
 # Semana Omnistack 05
 
 ## Sobre
-- Aplicação semelhante ao twitter, aonde o usuário poderá postar tweets e dar likes com atualização em tempo real.
+- Aplicação semelhante ao twitter, em que o usuário poderá postar tweets e dar likes com atualização em tempo real.
 
 ## Tecnologias
 - NodeJS no backend;
